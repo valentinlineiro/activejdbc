@@ -157,6 +157,11 @@ public enum Registry {
             }
         }
     }
+    
+    public synchronized void reset() {
+    	staticMetadataStatus = 0;
+    	initedDbs.clear();
+    }
 
     private boolean loadStaticMetadata() {
         try {
