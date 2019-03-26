@@ -46,9 +46,9 @@ public enum Registry {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Registry.class);
 
-    private final MetaModels metaModels = new MetaModels();
+    private MetaModels metaModels = new MetaModels();
     private final Map<Class, ModelRegistry> modelRegistries = new HashMap<>();
-    private final Configuration configuration = new Configuration();
+    private Configuration configuration = new Configuration();
     private final StatisticsQueue statisticsQueue;
     private final Set<String> initedDbs = new HashSet<>();
 
@@ -154,6 +154,14 @@ public enum Registry {
                 throw new InitException(e);
             }
         }
+    }
+     
+    public synchronized void reset() {
+    	initedDbs.clear();
+    	metaModels = null;
+    	metaModels = new MetaModels();
+    	configuration = null;
+    	configuration = new Configuration();
     }
 
     /**

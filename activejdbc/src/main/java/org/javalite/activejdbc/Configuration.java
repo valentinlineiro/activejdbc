@@ -29,8 +29,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.net.JarURLConnection;
 import java.net.URL;
 import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+
 import org.javalite.common.Convert;
 
 import static org.javalite.common.Util.*;
@@ -110,6 +114,7 @@ public class Configuration {
         } catch (IOException e) {
             throw new InitException(e);
         }
+        
         if(modelsMap.isEmpty()){
             LogFilter.log(LOGGER, LogLevel.INFO, "ActiveJDBC Warning: Cannot locate any models, assuming project without models.");
             return;
