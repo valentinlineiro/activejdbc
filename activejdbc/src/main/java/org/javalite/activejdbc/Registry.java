@@ -156,6 +156,11 @@ public enum Registry {
         }
     }
      
+    public synchronized void init() {
+    	//Disclaimer. This actually works if we don't use the DBName annotation
+    	init(DB.DEFAULT_NAME);
+    }
+     
     public synchronized void reset() {
     	initedDbs.clear();
     	metaModels = null;
